@@ -23,6 +23,9 @@ class Input : public Calculator<double>
 public:
     int in;
     void input();
+    void twoInput();
+    void oneInput();
+    void catchError();
 };
 
 #endif

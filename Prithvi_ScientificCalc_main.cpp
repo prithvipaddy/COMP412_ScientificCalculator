@@ -5,16 +5,31 @@
 int main()
 {
     Input i;
+    i.input();
     bool flag = true;
+    std::string opt;
     while(flag == true)
     {
-        i.input();
-        std::cout << "Would you like to continue calculating? "
-        << "Enter 'Y' to continue, or any other character to exit: " << std::endl;
-        std::string opt;
+        assert(flag==true);
+        try{
+        std::cout << "Would you like to continue calculating? (Y/N): " << std::endl;
         std::cin >> opt;
-        if(opt != "Y" && opt != "y")
+        if(opt == "Y" || opt == "y")
+        {
+            flag = true;
+            i.input();
+        }
+        else if(opt == "N" || opt == "n")
+        {
             flag = false;
+            std::cout << "Exiting..." << std::endl;
+        }
+        else
+            throw opt;
     }
+    catch(std::string opt)
+    {
+        std::cout << "The input recieved doesn't match any of the options. " << std::endl;
+    }}
     return 0;
 }
